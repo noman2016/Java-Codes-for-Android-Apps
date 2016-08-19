@@ -1,0 +1,260 @@
+|----------------------------|
+|         Java Code          |
+|____________________________|
+
+
+
+package com.nomanapps.commisioncalculator;
+
+import android.R.string;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends Activity {
+	EditText num1, num2;
+	Button btn1,btn2;
+	TextView result, textabout;
+	
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		num1=(EditText) findViewById(R.id.num1);
+		num2=(EditText) findViewById(R.id.num2);
+		btn1=(Button) findViewById(R.id.btn1);
+		btn2= (Button) findViewById(R.id.btn2);
+		textabout=(TextView) findViewById(R.id.textabout);
+		
+		result=(TextView) findViewById(R.id.result);
+	
+//		String f = num1.getText().toString();
+//    	String s = num2.getText().toString();
+//        Double fd = Double.parseDouble(f);
+//        Double sd = Double.parseDouble(s);
+		
+		btn1.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				// verible logic for C language
+				//double commision,price,net_price,percentage_commision;
+				//program logic
+				//    printf("Please Enter Your Commision = ");
+			    //scanf("%f",&commision);
+			    //percentage_commision=100-commision;
+			    /*printf("\nYour percentage commision is = %f",percentage_commision);*/
+			    //printf("\n\nPlease Enter Your Price = ");
+			    //scanf("%f",&price);
+			    //net_price=percentage_commision*price/100;
+			    //printf("\n\nYour Net Price is = %.3f",net_price);
+			    //printf("\n\n");
+				String fs;
+				try {
+					String f = num1.getText().toString();
+			    	String s = num2.getText().toString();
+			        Double fd = Double.parseDouble(f);
+			        fd=100-fd;
+			        Double sd = Double.parseDouble(s);
+					fs=(fd*sd)/100+"";
+					
+				} catch (Exception e) {
+					// TODO: handle exception
+					fs="Enter the number appropriately";
+					
+				}
+				result.setText( fs );
+			}
+		});
+		
+		btn2.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				num1.setText("");
+				num2.setText("");
+				result.setText("");
+				
+			}
+		});
+		
+		textabout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent1=new Intent(MainActivity.this,AboutmeActivity.class);
+				startActivity(intent1);
+			}
+		});
+	}
+}
+
+
+|----------------------------|
+|         xml Code           |
+|____________________________|
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#FFFFD4" >
+
+   <DigitalClock
+        android:id="@+id/digitalClock1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="30dp"
+        android:textColor="#550000"
+        android:text="DigitalClock" />
+
+   <ScrollView
+       android:id="@+id/scrollView1"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" >
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical" >
+           
+           <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See your Commision"
+        android:layout_gravity="center"
+        android:textSize="30dp"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:background="#D4D4FF"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Your Commision :"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="2dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/num1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter Input Your Percentage"
+        android:textSize="22dp"
+        android:inputType="numberDecimal" >
+        <requestFocus />
+    </EditText>
+    
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Your Price :"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="2dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <EditText
+        android:id="@+id/num2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter Input Your Price"
+        android:textSize="22dp"
+        android:inputType="numberDecimal" >
+        <requestFocus />
+    </EditText>
+    
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        android:layout_gravity="center"
+        android:paddingLeft="55dp"
+        android:paddingRight="55dp"
+        android:textSize="25dp"
+        android:text="Ok" />
+    
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Net Price :"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="2dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:textColor="#550055"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="30dp"
+        android:background="#AAFFFF"
+        android:layout_marginRight="10dp"
+        android:hint="  Show the Result   "
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_gravity="center" />
+    
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        android:layout_gravity="center"
+        android:paddingLeft="55dp"
+        android:paddingRight="55dp"
+        android:textSize="25dp"
+        android:text="Refresh" />
+    
+    <TextView
+       android:id="@+id/textabout"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+        android:text="This Apps Created by Hafez Abdullah Al Noman"
+        android:textSize="16dp"
+        android:layout_gravity="center"
+        android:textColor="#000000"
+        android:layout_marginTop="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+       
+       </LinearLayout>
+   </ScrollView>
+
+</LinearLayout>
